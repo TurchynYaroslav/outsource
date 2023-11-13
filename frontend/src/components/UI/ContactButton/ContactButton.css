@@ -1,0 +1,41 @@
+.contact-us {
+	display: inline-flex;
+	align-items: center;
+	gap: 15px;
+	background-color: rgba(0, 0, 0, 0.75);
+	padding: 10px 15px;
+	border-radius: 15px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 20px;
+	font-weight: 500;
+	transition: all 0.3s ease 0s;
+}
+
+.contact-us span {
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.contact-us__arrow {
+	transition: all 0.5s ease 0s;
+}
+
+.contact-us:hover {
+	background-color: rgba(45, 82, 20, 0.75);
+}
+
+.contact-us:hover .contact-us__arrow {
+	transform: rotate(360deg);
+}
+
+@media (max-width: 992px) {
+	.contact-us {
+		font-size: 18px;
+	}
+}
