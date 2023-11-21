@@ -1,0 +1,72 @@
+.go-to-button {
+	position: fixed;
+	top: 50%;
+	left: 10px;
+	transform: translate(0px, -50%);
+	z-index: 3;
+	display: flex;
+	gap: 75px;
+	flex-direction: column;
+	align-items: center;
+	text-decoration: none;
+	color: #000;
+	font-size: 26px;
+	font-weight: 600;
+	padding: 50px 10px;
+	border-radius: 15px;
+	backdrop-filter: blur(2px);
+	background-color: rgba(255, 255, 255, 0.75);
+	transition: all 0.3s ease 0s;
+}
+
+.go-to-button::after {
+	content: '';
+	width: 150px;
+	height: 5px;
+	display: block;
+	backdrop-filter: blur(2px);
+	background-color: rgba(255, 255, 255, 0.75);
+	position: absolute;
+	top: 50%;
+	right: calc(100% + 10px);
+	transform: translate(0px,-50%);
+}
+
+.go-to-button::before {
+	content: '';
+	width: 160px;
+	height: 100%;
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 100%;
+}
+
+.go-to-button__text {
+	writing-mode: vertical-lr;
+}
+
+.go-to-button-right.go-to-button::after {
+	left: calc(100% + 10px);
+}
+
+.go-to-button-right.go-to-button::before {
+	left: 100%;
+}
+
+.go-to-button-left:hover {
+	left: 160px;
+}
+
+.go-to-button-right:hover {
+	right: 160px;
+}
+
+.go-to-button-right {
+	right: 10px;
+	left: auto;
+}
+
+.left {
+	transform: rotate(180deg);
+}

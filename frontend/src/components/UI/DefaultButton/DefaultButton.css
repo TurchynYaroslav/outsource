@@ -1,0 +1,12 @@
+.link-button {
+	padding: 10px 25px;
+	background: rgba(0, 0, 0, 0.85);
+	color: #fff;
+	border-radius: 15px;
+	transition: all 0.3s ease 0s;
+	cursor: pointer;
+}
+
+.link-button:hover {
+	background: rgba(45, 82, 20, 0.75);
+}

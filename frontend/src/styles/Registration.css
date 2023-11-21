@@ -1,0 +1,107 @@
+.registration {
+	position: relative;
+	padding: 187px 0px 138px 0px;
+}
+
+.registration__container {
+	position: relative;
+	z-index: 2;
+	max-width: 1036px;
+	margin: 0 auto;
+	padding: 0px 10px;
+	text-align: center;
+}
+
+.main__background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+
+.main__background img {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+	opacity: 25%;
+}
+
+.registration__title {
+	font-size: 33px;
+	font-weight: 700;
+	margin: 0px 0px 10px 0px;
+}
+
+.registration__sub-title {
+	font-size: 33px;
+	font-weight: 600;
+	margin: 0px 0px 40px 0px;
+}
+
+.form__inputs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px;
+	justify-content: center;
+}
+
+.form__decoration {
+	max-width: 800px;
+	background: #D9D9D9;
+	height: 3px;
+	margin: 20px auto;
+}
+
+.form__input {
+	flex: 1 1 50%;
+	max-width: 500px;
+	min-width: 0;
+	border-radius: 12.5px;
+	background: rgba(0, 0, 0, 0.70);
+	backdrop-filter: blur(2px);
+	padding: 10px 25px;
+	border: none;
+	font-size: 24px;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.70);
+}
+
+.form__input::placeholder {
+	color: rgba(255, 255, 255, 0.70);
+}
+
+.form__input:focus {
+	outline: none;
+}
+
+.social-connect__description {
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.social-connect {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin: 0px 0px 20px 0px;
+}
+
+.social-connect__button {
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.social-connect__button img {
+	height: 70px;
+	width: 70px;
+	border-radius: 10px;
+}
