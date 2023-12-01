@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from rest_framework.response import Response
 from outsource import settings
 import requests
+import json
 from urllib.parse import parse_qs
 
 # from .serializers import UserRegistrationSerializer
@@ -41,7 +42,7 @@ class AuthorizeUserGithub(generics.CreateAPIView):
         # URL для запроса токена доступа
         token_url = 'https://github.com/login/oauth/access_token'
 
-# Параметры для запроса
+        # Параметры для запроса
         data = {
             'client_id': settings.SOCIAL_AUTH_GITHUB_KEY,
             'client_secret': settings.SOCIAL_AUTH_GITHUB_SECRET,
@@ -49,7 +50,16 @@ class AuthorizeUserGithub(generics.CreateAPIView):
             'redirect_uri': settings.REDIRECT_URI
         }
 
-# Выполнение POST-запроса
+        # Выполнение POST-запроса
         response = requests.post(token_url, data=data)
         response_dict = parse_qs(response.text)
+
+        user_url = 'https://api.github.com/user'
+        headers = {'Authorization': f'Bearer {
+            response_dict['access_token'][0]}'}
+        response_user = requests.get(user_url, headers=headers)
+        userData = json.loads(response_user.text)
+        print(userData['id'])
+
+        response_dict['name'] = [userData['name']]
         return Response(response_dict)
