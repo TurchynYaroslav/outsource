@@ -1,23 +1,43 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 export default class GitAuthService {
-  static async justRequest(get_url, get_params) {
-    const response = await axios({
-      method: "get",
-      //   "http://127.0.0.1:8000/gitauth/"
-      url: get_url,
-      params: get_params,
-    });
-    return response;
+  static async justRequest(url, params = {}) {
+    try {
+      const response = await axios({
+        method: "get",
+        url: url,
+        params: params,
+      });
+      return response;
+    } catch (error) {
+      console.error("Error in justRequest:", error.message);
+      throw error;
+    }
   }
-  static async getParamCode(get_url) {
-    const url = new URLSearchParams(window.location.search);
-    const params = url.get("code");
-    let response = await this.justRequest(get_url, { code: params });
-    Object.keys(response.data).forEach((key) => {
-      Cookies.set(key, response.data[key][0], { expires: 7 });
-    });
-    // Cookies.set("user", "John Doe", { expires: 7 });
-    window.close();
+  // access_token
+  static async setAccessToken(url, redirectUrl) {
+    try {
+      // get code
+      const queryParams = new URLSearchParams(window.location.search);
+      const code = queryParams.get("code");
+      if (!code) {
+        console.error("Parameter 'code' is missing in the URL.");
+        return;
+      }
+      // send request
+      let response = await this.justRequest(url, { code: code });
+      // set access_token
+      if (response.data) {
+        Object.keys(response.data).forEach((key) => {
+          Cookies.set(key, response.data[key][0], { expires: 7 });
+        });
+        return true;
+      } else {
+        console.error("Invalid response data.");
+      }
+    } catch (error) {
+      console.error("Error in getParamCode:", error.message);
+      throw error;
+    }
   }
 }

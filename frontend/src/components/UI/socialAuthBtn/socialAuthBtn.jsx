@@ -1,17 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import GitAuthService from "../../../API/gitAuthService";
+
 const SocialAuthBtn = () => {
-  const getUrl = async () => {
-    const response = await GitAuthService.justRequest(
-      "http://127.0.0.1:8000/api_auth/get_client_url/"
-    );
-    window.open(
-      await response.data.url,
-      "_blank",
-      "location=yes,height=570,width=520,scrollbars=yes,status=yes"
-    );
-    return response.data.url;
+  const [gitHubUrl, setGitHubUrl] = useState("");
+  // get right url with clientID
+  const fetchGitHubUrl = async () => {
+    try {
+      // request on server
+      const response = await GitAuthService.justRequest(
+        "http://127.0.0.1:8000/api_auth/get_client_url/"
+      );
+
+      // set <<gitHubUrl>>
+      if (response.data && response.data.url) {
+        setGitHubUrl(response.data.url);
+      } else {
+        throw new Error("Invalid response format or missing URL.");
+      }
+    } catch (error) {
+      console.error("Error fetching GitHub URL:", error.message);
+    }
   };
+
+  useEffect(() => {
+    // redirect to the resulting URL if <<gitLab Url>> is not empty
+    if (gitHubUrl) {
+      window.location.href = gitHubUrl;
+    }
+  }, [gitHubUrl]);
   return (
     <div className="form__social-connect social-connect">
       <div className="social-connect__description">
@@ -21,9 +37,8 @@ const SocialAuthBtn = () => {
         <img src="./img/registration/google.svg" alt="" />
       </button>
       <button
-        onClick={async (e) => {
-          e.preventDefault();
-          getUrl();
+        onClick={() => {
+          fetchGitHubUrl();
         }}
         className="social-connect__button"
       >
