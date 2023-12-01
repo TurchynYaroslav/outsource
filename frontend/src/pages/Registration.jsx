@@ -8,7 +8,7 @@ import GoToButton from '../components/UI/GoToButton/GoToButton';
 const Registration = () => {
 	return (
 		<div className="wrapper">
-			<Header/>
+			<Header theme={'transparent'}/>
 			<main className='main'>
 				<GoToButton text={'Log in'} path={'/login'} direction={'right'}/>
 				<div className="main__registration registration">

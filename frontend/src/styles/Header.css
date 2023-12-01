@@ -20,8 +20,17 @@
 	align-items: center;
 	padding: 10px 15px;
 	border-radius: 15px;
+}
+
+.header__transparent .header__container {
 	background: rgba(255, 255, 255, 0.01);
 	box-shadow: 0px 0px 50px 2px rgba(255, 255, 255, 0.01);
+	backdrop-filter: blur(25px);
+}
+
+.header__dark .header__container {
+	background: rgba(9, 12, 17, 0.50);
+	box-shadow: 0px 0px 50px 3px rgba(0, 0, 0, 0.50);
 	backdrop-filter: blur(25px);
 }
 

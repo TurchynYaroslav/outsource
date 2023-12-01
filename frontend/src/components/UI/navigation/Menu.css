@@ -20,6 +20,10 @@
 	transition: all 0.15s ease 0s;
 }
 
+.header__dark .menu__icon span {
+	background: #fff;
+}
+
 .menu__icon::after, .menu__icon::before {
 	content: '';
 	height: 3px;
@@ -29,6 +33,14 @@
 	left: 0;
 	display: block;
 	transition: all 0.3s ease 0s;
+}
+
+.header__dark .menu__icon::after {
+	background: #fff;
+}
+
+.header__dark .menu__icon::before {
+	background: #fff;
 }
 
 .menu__icon::after {
@@ -60,6 +72,10 @@
 	font-size: 24px;
 }
 
+.header__dark .menu__link {
+	color: #fff;
+}
+
 .menu__item {
 	position: relative;
 }
@@ -76,6 +92,10 @@
 	transition: width 0.3s ease 0s;
 }
 
+.header__dark .menu__item:not(:last-child)::after {
+	background-color: #fff;
+}
+
 .menu__item:hover.menu__item::after {
 	width: 100%;
 }
@@ -88,6 +108,11 @@
 	transition: all 0.3s ease 0s;
 }
 
+.header__dark .link-button {
+	background: rgba(255, 255, 255, 0.85);
+	color: #000;
+}
+ 
 .link-button:hover {
 	background: rgba(45, 82, 20, 0.75);
 }

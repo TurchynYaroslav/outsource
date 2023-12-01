@@ -1,0 +1,260 @@
+.welcome {
+	padding: 236px 0px 161px 0px;
+}
+
+.welcome__container {
+	max-width: 1240px;
+	padding: 0px 15px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.welcome__title {
+	font-size: 70px;
+	font-weight: 400;
+}
+
+.welcome__text {
+	font-size: 48px;
+	font-weight: 400;
+}
+
+.welcome__sub-title {
+	font-size: 24px;
+	font-weight: 400;
+}
+
+/*========================================================================================================================================================*/
+.about {
+	color: #fff;
+	padding: 0px 0px 43px 0px;
+}
+
+.about__body {
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(37.5px);
+	border-radius: 50px;
+	padding: 30px;
+}
+
+.about__container {
+	max-width: 1240px;
+	padding: 0px 15px;
+	margin: 0 auto;
+}
+
+.about__title {
+	font-weight: 500;
+	font-size: 32px;
+	margin: 0px 0px 30px 0px;
+}
+
+.about__info {
+	margin: 0px 0px 130px 0px;
+}
+
+.about__columns {
+	max-width: 1040px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	gap: 40px;
+	flex-wrap: wrap;
+}
+
+.column-about {
+	max-width: 500px;
+}
+
+.column-about__title {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 25px;
+	font-weight: 700;
+	margin: 0px 0px 15px 0px;
+}
+
+.column-about__text {
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.contracts {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 30px;
+	align-items: center;
+	padding: 20px;
+	border-radius: 15px;
+	background: rgba(0, 0, 0, 0.25);
+	backdrop-filter: blur(5px);
+}
+
+.contracts__title {
+	font-size: 24px;
+	font-weight: 500;
+	max-width: 465px;
+}
+
+.contracts__logos {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 25px;
+	padding: 18px 104px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.90);
+}
+
+/*========================================================================================================================================================*/
+.contact {
+	position: relative;
+	margin: 27px 0px 70px 0px;
+}
+
+.contact__background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+.contact__wrapper {
+	border: 3px solid #CADEE1;
+	background: linear-gradient(0deg, rgba(177, 212, 215, 0.60) 0%, rgba(177, 212, 215, 0.60) 100%), rgba(211, 211, 211, 0.60) 50% / cover no-repeat;
+	box-shadow: 0px -15px 30px 30px #CBE0E3;
+	backdrop-filter: blur(2px);
+}
+
+.contact__background img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	opacity: 0.6;
+}
+
+.contact__container {
+	max-width: 1240px;
+	padding: 90px 15px 90px 15px;
+	position: relative;
+	z-index: 2;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.contact__title {
+	font-size: 34px;
+	font-weight: 500;
+	margin: 0px 0px 25px 0px;
+}
+
+.form-contact__sub-title {
+	font-size: 26px;
+	font-weight: 500;
+}
+
+.sub-title-bold {
+	font-size: 33px;
+	font-weight: 600;
+}
+
+.form-contact form>*:not(:last-child) {
+	margin: 0px auto 45px auto;
+}
+
+
+.form-contact__checkboxes {
+	max-width: 760px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.50);
+	backdrop-filter: blur(25px);
+	padding: 20px;
+}
+
+.form-contact__checkbox {
+	position: relative;
+}
+
+.form-contact__checkbox label {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 25px;
+	font-weight: 500;
+	color: #fff;
+	cursor: pointer;
+}
+
+.form-contact__checkbox label::before {
+	content: '';
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 5px;
+	background-color: #fff;
+}
+
+.checkbox__image {
+	position: absolute;
+	z-index: 2;
+	width: 20px;
+	height: 15px;
+	top: 50%;
+	left: 7.5px;
+	transform: translate(0, -50%);
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.1s ease 0s;
+}
+
+.form-contact__checkbox input {
+	display: none;
+}
+
+
+.checkbox__input:checked ~ .checkbox__image {
+	opacity: 1;
+}
+
+.form-contact__inputs {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 760px;
+}
+
+.form-contact__input {
+	flex: 1 1 100%;
+	border-radius: 12.5px;
+	background: rgba(0, 0, 0, 0.70);
+	backdrop-filter: blur(2px);
+	padding: 10px 25px;
+	border: none;
+	font-size: 24px;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 0.70);
+}
+
+.form-contact__textarea {
+	resize: none;
+	height: 80px;
+}
+
+.form-contact__input::placeholder {
+	color: rgba(255, 255, 255, 0.70);
+}
+
+.form-contact__input:focus {
+	outline: none;
+}

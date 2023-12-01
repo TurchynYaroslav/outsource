@@ -18,6 +18,6 @@ export default class GitAuthService {
       Cookies.set(key, response.data[key][0], { expires: 7 });
     });
     // Cookies.set("user", "John Doe", { expires: 7 });
-    // window.close();
+    window.close();
   }
 }

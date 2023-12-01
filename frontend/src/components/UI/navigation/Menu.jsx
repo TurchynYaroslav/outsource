@@ -30,6 +30,11 @@ const Menu = () => {
             </a>
           </li>
           <li className="menu__item">
+            <a href="" className="menu__link">
+              Chat with us 
+            </a>
+          </li>
+          <li className="menu__item">
             <Link to="/login" className="menu__link">
               Log in
             </Link>

@@ -38,3 +38,40 @@ button {
 .wrapper {
   position: relative;
 }
+
+.text-bold {
+  font-weight: 700;
+}
+
+.text-glowing {
+  color: var(--1-e-273850, #EEF1F6);
+  font-weight: 700;
+}
+
+.block-link {
+  position: relative;
+}
+
+.block-link__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.block-link__background img {
+  width: 100%;
+	height: 100%;
+}
+
+.block-link__wrapper {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width:1200px) {
+  .block-link__background img{
+    object-fit: cover;
+  }
+}

@@ -30,8 +30,7 @@ from urllib.parse import parse_qs
 
 class GetClientUrl(generics.CreateAPIView):
     def get(self, request, *args, **kwargs):
-        url = f'https://github.com/login/oauth/authorize?client_id={
-            settings.SOCIAL_AUTH_GITHUB_KEY}'
+        url = f'https://github.com/login/oauth/authorize?client_id={settings.SOCIAL_AUTH_GITHUB_KEY}'
         return Response({'url': url})
 
 
