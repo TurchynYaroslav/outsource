@@ -1,10 +1,11 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 export default class GitAuthService {
-  static async justRequest(url, params = {}) {
+  static async justRequest(url, params = {}, headers = {}) {
     try {
       const response = await axios({
         method: "get",
+        headers: headers, // передаем заголовки напрямую
         url: url,
         params: params,
       });
@@ -14,6 +15,7 @@ export default class GitAuthService {
       throw error;
     }
   }
+
   // access_token
   static async setAccessToken(url, redirectUrl) {
     try {
@@ -29,7 +31,10 @@ export default class GitAuthService {
       // set access_token
       if (response.data) {
         Object.keys(response.data).forEach((key) => {
-          Cookies.set(key, response.data[key][0], { expires: 7 });
+          Cookies.set(key, response.data[key], {
+            expires: 7,
+            sameSite: "Lax",
+          });
         });
         return true;
       } else {

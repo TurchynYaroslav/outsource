@@ -37,7 +37,8 @@ const SocialAuthBtn = () => {
         <img src="./img/registration/google.svg" alt="" />
       </button>
       <button
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           fetchGitHubUrl();
         }}
         className="social-connect__button"
