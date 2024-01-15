@@ -30,12 +30,21 @@ export default class GitAuthService {
       let response = await this.justRequest(url, { code: code });
       // set access_token
       if (response.data) {
-        Object.keys(response.data).forEach((key) => {
-          Cookies.set(key, response.data[key], {
-            expires: 7,
-            sameSite: "Lax",
-          });
-        });
+        let COOKIE_OPTIONS = {
+          expires: new Date(Date.now() + response.data["expires_in"] * 1000),
+          sameSite: "Lax",
+        };
+        Cookies.set(
+          "access_token",
+          response.data["access_token"],
+          COOKIE_OPTIONS
+        );
+        Cookies.set(
+          "refresh_token",
+          response.data["refresh_token"],
+          COOKIE_OPTIONS
+        );
+
         return true;
       } else {
         console.error("Invalid response data.");

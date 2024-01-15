@@ -149,6 +149,9 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = (
+    # Google  OAuth2
+    'social_core.backends.google.GoogleOAuth2',
+
     # GitHub OAuth2
     'social_core.backends.github.GithubOAuth2',
 
@@ -162,8 +165,9 @@ AUTHENTICATION_BACKENDS = (
 # GitHub configuration
 SOCIAL_AUTH_GITHUB_KEY = '8b2f299ce7ab523672b3'
 SOCIAL_AUTH_GITHUB_SECRET = '41ad359a9116976b5c909343fb120e159c136368'
-SOCIAL_AUTH_GITHUB_URL = f'https://github.com/login/oauth/authorize?client_id={
+SOCIAL_AUTH_GITHUB_URI = f'https://github.com/login/oauth/authorize?client_id={
     SOCIAL_AUTH_GITHUB_KEY}&scope=email'
-REDIRECT_URI = 'http://127.0.0.1:3000/redirect'
+REDIRECT_URI = 'http://127.0.0.1:3000/git-callback'
+CONVERT_TOKEN_URI = 'http://localhost:8000/auth/convert-token'
 
 CORS_ALLOW_ALL_ORIGINS = True

@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from django.http import JsonResponse
 from outsource import settings
 from authUser import utils
-from .serializers import SocialMediaUserSerializer, GetUserSerializer
+from .serializers import GetUserSerializer
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
 # from .serializers import UserRegistrationSerializer
@@ -31,7 +31,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 #         return response
 
 class GetUsersInfo(generics.GenericAPIView):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = GetUserSerializer
 
@@ -44,29 +44,40 @@ class GetUsersInfo(generics.GenericAPIView):
 
 class GetClientUrl(generics.CreateAPIView):
     def get(self, request, *args, **kwargs):
-        return JsonResponse({'url': settings.SOCIAL_AUTH_GITHUB_URL})
+        return JsonResponse({'url': settings.SOCIAL_AUTH_GITHUB_URI})
 
 
 class AuthorizeUserGithub(generics.CreateAPIView):
-    serializer_class = SocialMediaUserSerializer
-
     def get(self, request, *args, **kwargs):
         code = request.query_params.get('code')
         if code:
-            response_dict = utils.getToken(code)
-            if 'error' not in response_dict:
-                userData = utils.getGitInfo(response_dict)
-                if userData['email']:
-                    serializer = self.get_serializer(data=userData)
-                    if serializer.is_valid():
-                        serializer.save()
-                        return JsonResponse(utils.makeResponse(dict(serializer.data['user_data'])))
-                    # Обработка ошибки валидации сериализатора
-                    print('Error in serializer validation:', serializer.errors)
-                else:
-                    return JsonResponse({'error': 'Make the email address available or enter it manually'}, status=500)
+            git_token = utils.getGitToken(code)
+            if 'error' not in git_token:
+                tokens = utils.getAC_Token(git_token)
+                return JsonResponse(tokens, status=200)
             else:
-                return JsonResponse(response_dict, status=500)
-
+                return JsonResponse({'Error': 'Get git token is failed'}, status=500)
         else:
             return JsonResponse({'Error': 'Get token is failed'}, status=500)
+    # serializer_class = SocialMediaUserSerializer
+
+    # def get(self, request, *args, **kwargs):
+    #     code = request.query_params.get('code')
+    #     if code:
+    #         response_dict = utils.getToken(code)
+    #         if 'error' not in response_dict:
+    #             userData = utils.getGitInfo(response_dict)
+    #             if userData['email']:
+    #                 serializer = self.get_serializer(data=userData)
+    #                 if serializer.is_valid():
+    #                     serializer.save()
+    #                     return JsonResponse(utils.makeResponse(dict(serializer.data['user_data'])))
+    #                 # Обработка ошибки валидации сериализатора
+    #                 print('Error in serializer validation:', serializer.errors)
+    #             else:
+    #                 return JsonResponse({'error': 'Make the email address available or enter it manually'}, status=500)
+    #         else:
+    #             return JsonResponse(response_dict, status=500)
+
+    #     else:
+    #         return JsonResponse({'Error': 'Get token is failed'}, status=500)

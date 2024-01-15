@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GitAuthService from "../API/gitAuthService";
 
-const CodeRedirect = () => {
+const GitCallback = () => {
   const [canRedirect, setCanRedirect] = useState();
   // get params
   useEffect(() => {
@@ -27,4 +27,4 @@ const CodeRedirect = () => {
   return <></>;
 };
 
-export default CodeRedirect;
+export default GitCallback;
